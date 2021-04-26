@@ -2,28 +2,22 @@ import { observer } from 'mobx-react-lite';
 import { useContext } from 'react';
 import { Button, Col, Image, ListGroup, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import CartStore from '../Store';
+import CartStore from '../StoreCart'
 
 const Cartscreen = () => {
   const cartStore = useContext(CartStore);
   const { store, info, removeFromStore } = cartStore;
-  const newStore = store.slice(1);
-
-  // const cartItemsFromStorage = localStorage.getItem("cartItems")
-  // ? JSON.parse(localStorage.getItem("cartItems"))
-  // : [];
-  // console.log(cartItemsFromStorage);
   return (
     <Row>
       <Col md={8}>
         <h1>SHOPPING CART</h1>
-        {info.length === 1 ? (
+        {info.length === 0 ? (
           <div>
             Your cart is empty <Link to='/'>Go Back</Link>
           </div>
         ) : (
           <ListGroup variant='flush'>
-            {newStore.map((item, index) => (
+            {store.map((item, index) => (
               <ListGroup.Item key={index}>
                 <Row>
                   <Col md={2}>

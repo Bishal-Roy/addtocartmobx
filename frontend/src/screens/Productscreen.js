@@ -1,10 +1,9 @@
-import React from 'react';
 import { Button, Col, Image, ListGroup, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import products from '../data/products';
 import { observer } from 'mobx-react-lite';
 import { useContext } from 'react';
-import CartStore from '../Store';
+import CartStore from '../StoreCart';
 
 const Productscreen = ({ match, history }) => {
   const productId = match.params.id;
